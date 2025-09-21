@@ -40,7 +40,8 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="menu" class="hidden md:flex flex-col md:flex-row gap-2 md:gap-6 text-sm mt-4 md:mt-0 bg-white md:bg-transparent p-4 md:p-0 rounded shadow md:shadow-none">
+    <!-- CHANGED: flex-col for mobile, flex-row for desktop -->
+    <nav id="menu" class="hidden flex-col md:flex md:flex-row gap-2 md:gap-6 text-sm mt-4 md:mt-0 bg-white md:bg-transparent p-4 md:p-0 rounded shadow md:shadow-none">
       <a href="#about" class="hover:underline py-2 px-4 md:p-0">About</a>
       <a href="#safaris" class="hover:underline py-2 px-4 md:p-0">Safaris & Zones</a>
       <a href="#plan" class="hover:underline py-2 px-4 md:p-0">Plan Your Visit</a>
@@ -59,6 +60,7 @@
     menu.classList.toggle('hidden');
   });
 </script>
+
   <!-- Hero -->
   <main class="max-w-6xl mx-auto px-6 py-12">
     <section class="grid md:grid-cols-2 gap-8 items-center">
@@ -234,6 +236,7 @@
 </script>
 
 </body>
+
 
 
 
