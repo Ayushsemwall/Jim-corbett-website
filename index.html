@@ -20,26 +20,47 @@
 </head>
 <body class="min-h-screen bg-gradient-to-b from-green-50 to-white text-gray-800">
 
-  <!-- Header -->
-  <header class="bg-white/80 backdrop-blur sticky top-0 z-40 shadow-sm">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class=""w-12 h-12 rounded-full bg-emerald-700 flex items-center justify-center text-white font-bold"><img src="images/logo.jpg"></div>
-        <div>
-          <h1 class="text-xl font-semibold">Jim Corbett National Park</h1>
-          <p class="text-sm text-gray-600">Asia's first national park — wildlife, safaris & nature</p>
-        </div>
+ <!-- Header -->
+<header class="bg-white/80 backdrop-blur sticky top-0 z-40 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    
+    <!-- Logo and title -->
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full bg-emerald-700 flex items-center justify-center text-white font-bold">
+        <img src="images/logo.png" alt="Logo" class="w-10 h-10" />
       </div>
-      <nav class="hidden md:flex gap-6 text-sm">
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#safaris" class="hover:underline">Safaris & Zones</a>
-        <a href="#plan" class="hover:underline">Plan Your Visit</a>
-        <a href="#gallery" class="hover:underline">Gallery</a>
-        <a href="#booking" class="ml-4 rounded-md px-4 py-2 bg-emerald-600 text-white hover:bg-emerald-700 transition relative -translate-y-1">Book Safari</a>
-      </nav>
-      </nav>
+      <div>
+        <h1 class="text-xl font-semibold">Jim Corbett National Park</h1>
+        <p class="text-sm text-gray-600">Asia's first national park — wildlife, safaris & nature</p>
+      </div>
     </div>
-  </header>
+
+    <!-- Hamburger button for mobile -->
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-gray-700 text-2xl">☰</button>
+    </div>
+
+    <!-- Navigation -->
+    <!-- CHANGED: removed 'hidden md:flex', now visible with flex-col on mobile -->
+    <nav id="menu" class="hidden md:flex flex-col md:flex-row gap-4 md:gap-6 text-sm">
+      <a href="#about" class="hover:underline">About</a>
+      <a href="#safaris" class="hover:underline">Safaris & Zones</a>
+      <a href="#plan" class="hover:underline">Plan Your Visit</a>
+      <a href="#gallery" class="hover:underline">Gallery</a>
+      <a href="#booking" class="rounded-md px-4 py-2 bg-emerald-600 text-white">Book Safari</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- JS for mobile menu toggle -->
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
 
   <!-- Hero -->
   <main class="max-w-6xl mx-auto px-6 py-12">
@@ -216,6 +237,7 @@
 </script>
 
 </body>
+
 
 
 
