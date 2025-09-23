@@ -1,155 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jim Corbett National Park</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jim Corbett National Park</title>
 
-<!-- Offline Tailwind CSS -->
-<link href="tailwind.min.css" rel="stylesheet" />
+  <!-- Tailwind CSS via jsDelivr (Stable, safer than script CDN) -->
+   <link href="css/tailwind.min.css" rel="stylesheet">
 
-<style>
-  /* Flip Card CSS */
-  .flip-card { perspective: 1000px; }
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  .flip-card:hover .flip-card-inner { transform: rotateY(180deg); cursor:pointer; }
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-  }
-  .flip-card-front { display:flex; align-items:center; justify-content:center; }
-  .flip-card-back { transform: rotateY(180deg); }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .flip-card {
+  perspective: 1000px;
+  
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+.flip-card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
 
-  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-</style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+  </style>
+
+  <title>Jim Corbett National Park — Safaris & Wildlife</title>
+  <meta name="description" content="Explore Jim Corbett National Park — book safaris, see tigers, elephants, and plan your wildlife visit in Uttarakhand, India.">
+  <meta name="keywords" content="Jim Corbett, Safari, Tigers, Uttarakhand, Wildlife, National Park">
+  <meta name="robots" content="index, follow">
 </head>
 <body class="min-h-screen bg-gradient-to-b from-green-50 to-white text-gray-800">
 
-<!-- Header -->
+  <!-- Header -->
 <header class="bg-white/80 backdrop-blur sticky top-0 z-40 shadow-sm">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    
+    <!-- Logo and title -->
     <div class="flex items-center gap-4">
-      <div class="w-12 h-12 rounded-full flex items-center justify-center">
-        <img src="logo.png" alt="Logo" class="w-10 h-10"/>
+      <div class="w-12 h-12 rounded-full  flex items-center justify-center text-white font-bold">
+        <img src="logo.png" alt="Logo" class="w-10 h-10" />
       </div>
       <div>
         <h1 class="text-xl font-semibold">Jim Corbett Wildlife Tours</h1>
         <p class="text-sm text-gray-600">Asia's first national park — wildlife, safaris & tours</p>
       </div>
     </div>
+
+    <!-- Hamburger button for mobile -->
     <div class="md:hidden">
       <button id="menu-btn" class="text-gray-700 text-2xl">☰</button>
     </div>
-    <nav id="menu" class="hidden md:flex flex-col md:flex-row gap-2 md:gap-6 text-sm md:text-base">
+
+    <!-- Navigation -->
+    <!-- CHANGED: removed 'hidden md:flex', now visible with flex-col on mobile -->
+    <nav id="menu" class="hidden md:flex flex-col md:flex-row gap-4 md:gap-6 text-sm">
       <a href="#about" class="hover:underline">About</a>
       <a href="#safaris" class="hover:underline">Safaris & Zones</a>
       <a href="#plan" class="hover:underline">Plan Your Visit</a>
       <a href="#gallery" class="hover:underline">Gallery</a>
       <a href="#booking" class="rounded-md px-4 py-2 bg-emerald-600 text-white">Book Safari</a>
     </nav>
+
   </div>
 </header>
+
+<!-- JS for mobile menu toggle -->
 <script>
-  const btn=document.getElementById('menu-btn');
-  const menu=document.getElementById('menu');
-  btn.addEventListener('click',()=>{menu.classList.toggle('hidden');});
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
 </script>
 
-<!-- Hero Section -->
-<main class="max-w-6xl mx-auto px-6 py-12">
-  <section class="grid md:grid-cols-2 gap-8 items-center">
-    <div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
-        Explore Jim Corbett — Home of the Royal Bengal Tiger
-      </h2>
-      <p class="mt-4 text-gray-700">
-        Discover dense forests, rolling grasslands, winding rivers, and a rich variety of wildlife.
-        Perfect for photographers, birdwatchers and adventure seekers.
-      </p>
-      <div class="mt-6 flex flex-col sm:flex-row gap-4">
-        <a href="#plan" class="inline-block px-6 py-3 bg-emerald-600 text-white rounded-lg shadow text-center">Plan Your Visit</a>
-        <a href="#safaris" class="inline-block px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg text-center">Safari Zones</a>
-      </div>
-      <ul class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-600">
-        <li class="p-3 bg-white rounded shadow-sm">Best time: Nov – Feb</li>
-        <li class="p-3 bg-white rounded shadow-sm">Top sights: Tigers, Elephants, Birds</li>
-        <li class="p-3 bg-white rounded shadow-sm">Location: Uttarakhand, India</li>
-      </ul>
-    </div>
-    <div class="rounded-lg overflow-hidden shadow-lg">
-      <img src="download.jpg" alt="Jim Corbett landscape" class="w-full h-80 sm:h-96 object-cover" />
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="mt-16 bg-white/60 p-8 rounded-lg shadow-sm">
-    <h3 class="text-2xl font-semibold">About the Park</h3>
-    <p class="mt-4 text-gray-700">
-      Established in 1936, Jim Corbett National Park is Asia's first national park and one of the most famous tiger reserves in India.
-    </p>
-    <div class="mt-12 flex flex-col md:flex-row gap-8">
-      <div class="md:w-1/3 flex flex-col gap-6">
-        <img src="PATH_TO_IMAGE1.jpg" alt="Landscape" class="w-full h-40 sm:h-52 md:h-48 object-cover rounded-lg shadow-md"/>
-        <img src="PATH_TO_IMAGE2.JPG" alt="Tiger" class="w-full h-40 sm:h-52 md:h-48 object-cover rounded-lg shadow-md"/>
-        <img src="PATH_TO_IMAGE3.JPG" alt="Forest" class="w-full h-40 sm:h-52 md:h-48 object-cover rounded-lg shadow-md"/>
-      </div>
-      <div class="md:w-2/3 flex flex-col gap-6">
-        <h4 class="text-2xl font-semibold">Overview of Jim Corbett</h4>
-        <p class="text-gray-700">Jim Corbett (Edward James Corbett, 1875–1955) was a legendary hunter, tracker, naturalist, and conservationist whose life inspired India’s first national park.</p>
-        <hr class="my-4 border-gray-300">
-        <h5 class="text-xl font-semibold">Geography</h5>
-        <p class="text-gray-700">Located in Nainital and Pauri Garhwal districts, spanning over 1,300 km² at the Himalayan foothills.</p>
-        <h5 class="text-xl font-semibold">Flora & Fauna</h5>
-        <p class="text-gray-700">Royal Bengal Tiger, Asiatic Elephant, Leopard, Sloth Bear, Deer species, 600+ bird species.</p>
-        <h5 class="text-xl font-semibold">Ecotourism</h5>
-        <p class="text-gray-700">Visitors enjoy jeep/canter safaris, bird watching, nature walks, and conservation programs.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Safari Zones -->
-  <section id="safaris" class="mt-12 bg-white p-8 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold">Safaris & Zones</h2>
-    <div class="mt-8 flex flex-col sm:flex-row gap-6 flex-wrap justify-center items-stretch">
-      <!-- Flip Card -->
-      <div class="flip-card w-full sm:max-w-xs md:w-80 h-96 md:h-[450px] mx-auto">
-        <div class="flip-card-inner">
-          <div class="flip-card-front bg-orange-100 rounded-xl overflow-hidden relative">
-            <img src="download.jpg" class="w-full h-full object-cover opacity-80" />
-            <div class="absolute inset-0 flex items-center justify-center">
-              <h2 class="text-xl md:text-2xl font-bold text-white drop-shadow-lg">Sonanadi Zone</h2>
-            </div>
-          </div>
-          <div class="flip-card-back bg-orange-50 rounded-xl flex flex-col items-center justify-center p-4 space-y-4">
-            <h3 class="text-lg font-semibold text-orange-700">Raw wilderness experience</h3>
-            <p class="text-sm text-gray-700 text-center">Famous for Elephants and Leopards. Excellent for birdwatching. Escape crowds and experience wild Corbett.</p>
-          </div>
+  <!-- Hero -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <section class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          Explore Jim Corbett — Home of the Royal Bengal Tiger
+        </h2>
+        <p class="mt-4 text-gray-700">
+          Discover dense forests, rolling grasslands, winding rivers and a rich variety of wildlife.
+          Perfect for photographers, birdwatchers and adventure seekers.
+        </p>
+        <div class="mt-6 flex gap-4">
+          <a href="#plan" class="inline-block px-6 py-3 bg-emerald-600 text-white rounded-lg shadow">Plan Your Visit</a>
+          <a href="#safaris" class="inline-block px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg">Safari Zones</a>
         </div>
+        <ul class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-600">
+          <li class="p-3 bg-white rounded shadow-sm">Best time: Nov – Feb</li>
+          <li class="p-3 bg-white rounded shadow-sm">Top sights: Tigers, Elephants, Birds</li>
+          <li class="p-3 bg-white rounded shadow-sm">Location: Uttarakhand, India</li>
+        </ul>
       </div>
-      <!-- Duplicate flip cards for Pakhro and others -->
-    </div>
-  </section>
+      <div class="rounded-lg overflow-hidden shadow-lg">
+        <img src="download.jpg" alt="Jim Corbett landscape" class="w-full h-80 object-cover" />
+      </div>
+    </section>
 
-  <!-- Gallery -->
-  <section id="gallery" class="mt-12">
-    <h3 class="text-2xl font-semibold">Gallery</h3>
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <img src="gallery.jpg" class="rounded shadow" />
-      <img src="sui.jpg" class="rounded shadow" />
-      <img src="ayush.jpg" class="rounded shadow" />
-    </div>
-  </section>
+<!-- About Us Section -->
+<section id="about" class="mt-16 bg-white/60 p-8 rounded-lg shadow-sm">
+  <h3 class="text-2xl font-semibold">About the Park</h3>
+  <p class="mt-4 text-gray-700">
+    Established in 1936, Jim Corbett National Park is Asia's first national park and one of the
+    most famous tiger reserves in India. The park preserves a remarkable mix of ecosystems — dense Sal forests, open grasslands, and many rivers — making it a hotspot for biodiversity.
+  </p>
 
+  <!-- Maps: Static + Live -->
+  <div class="mt-6 flex flex-col md:flex-row gap-6">
+    <!-- Static Map -->
+    <div class="md:w-1/2 w-full aspect-video rounded-lg overflow-hidden shadow-md">
+      <img src="PATH_TO_STATIC_MAP_IMAGE.webp" alt="Map of Jim Corbett National Park, Kotdwar Gate" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Live Google Map Embed -->
+    <div class="md:w-1/2 w-full aspect-video rounded-lg overflow-hidden shadow-md">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d444015.6296478193!2d78.6574328!3d29.6074039!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a24ffffffffff%3A0x3017b72d3d253fd7!2sJim%20Corbett%20National%20Park!5e0!3m2!1sen!2sin!4v1758572437397!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+<!-- Overview Section with Left Images -->
+<div class="mt-12 max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-start">
+
+  <!-- Left: Images -->
+  <div class="md:w-1/3 flex flex-col gap-6 items-center">
+
+    <!-- Image 1 -->
+    <div class="w-full rounded-xl overflow-hidden shadow-md">
+      <img src="PATH_TO_IMAGE1.jpg" alt="Jim Corbett Landscape" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Image 2 -->
+    <div class="w-full rounded-xl overflow-hidden shadow-md">
+      <img src="PATH_TO_IMAGE2.JPG" alt="Tiger in Corbett" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Image 3 -->
+    <div class="w-full rounded-xl overflow-hidden shadow-md">
+      <img src="PATH_TO_IMAGE3.JPG" alt="Forest View" class="w-full h-full object-cover" />
+    </div>
+
+  </div>
+
+  <!-- Right: Text -->
+  <div class="md:w-2/3 flex flex-col gap-6 justify-center">
+    <!-- Introduction -->
+    <div>
+      <h4 class="text-2xl font-semibold mb-2">Overview of Jim Corbett</h4>
+      <p class="text-gray-700">
+        Jim Corbett (Edward James Corbett, 1875–1955) was a legendary hunter, tracker, naturalist, and conservationist whose life’s work inspired the creation of India’s first national park — Jim Corbett National Park in Uttarakhand. Established in 1936, it remains one of the most famous tiger reserves in the world and a cornerstone of India’s wildlife conservation efforts.
+      </p>
+    </div>
+
+    <hr class="my-4 border-gray-300">
+
+    <!-- Geography -->
+    <div>
+      <h5 class="text-xl font-semibold mb-1">Geography</h5>
+      <p class="text-gray-700">
+        Located in Nainital and Pauri Garhwal districts, Jim Corbett National Park spans over 1,300 km² at the Himalayan foothills (400–1,200m). Its diverse terrain includes dense Sal forests, open grasslands, rivers like the Ramganga, and hill slopes, creating rich habitats for wildlife.
+      </p>
+    </div>
+
+    <!-- Flora & Fauna -->
+    <div>
+      <h5 class="text-xl font-semibold mb-1">Flora & Fauna</h5>
+      <p class="text-gray-700">
+        Corbett boasts rich biodiversity. <strong>Flora:</strong> Dominated by Sal trees, mixed forests, grasslands, shrubs, and bamboo. 
+        <strong>Fauna:</strong> Includes Royal Bengal Tiger, Asiatic Elephant, Leopard, Sloth Bear, Deer species, over 600 bird species, crocodiles, gharials, monitor lizards, turtles, and Mahseer fish.
+      </p>
+    </div>
+
+    <!-- Ecotourism -->
+    <div>
+      <h5 class="text-xl font-semibold mb-1">Ecotourism</h5>
+      <p class="text-gray-700">
+        Jim Corbett is a popular ecotourism destination attracting wildlife enthusiasts, photographers, and adventure seekers. Visitors can enjoy jeep and canter safaris in core zones like Dhikala, Bijrani, and Jhirna, bird watching, nature walks, eco-lodges, and educational programs on tiger conservation, supporting sustainable tourism and the local economy.
+      </p>
+    </div>
+
+    <!-- Challenges -->
+    <div>
+      <h5 class="text-xl font-semibold mb-1">Challenges</h5>
+      <p class="text-gray-700">
+        Despite its success, Jim Corbett faces challenges including human-wildlife conflict, poaching, tourism pressure, deforestation and development, and climate change affecting forest health and wildlife behavior.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+    <!-- Safari Zones -->
+     <div class="mt-12 bg-white p-8 rounded-lg shadow-md">
+    <section id="safaris" class="mt-12">
+      <h2 class="text-2xl font-semibold">Safaris & Zones</h2>
+      <!-- Jeep Safari Info -->
+<div class="mt-4">
+<h3 class="text-lg font-semibold"><li>Jeep Safari (6-Passenger)</li></h3>
+  <p class="mt-2 text-gray-700">
+  Jeep Safari in Jim Corbett offers an exciting way to explore the jungle’s wildlife and landscapes. Each jeep accommodates up to 6 people, 
+  taking visitors through forests, grasslands, and riverbanks to spot tigers, el</p>elephants, leopards, deer, and over 600 bird species under expert guidance.</p></div>
+  <div class="mt-4"><h3 class="text-lg font-semibold a"><li>Zones</li></h3>
+  <!-- Transparent Flip Cards -->
+<!-- Flip Cards Side by Side -->
+<div class="max-w-6xl mx-auto mt-12 flex flex-col md:flex-row gap-32 justify-center items-stretch">
+
+  <!-- Sonanadi Card -->
+<div class="flip-card w-80 h-[450px]">
+  <div class="flip-card-inner">
+
+    <!-- Front with Image -->
+    <div class="flip-card-front bg-transparent border-2 border-orange-600 rounded-xl overflow-hidden">
+      <img src="download.jpg" 
+           alt="Sonanadi Zone" 
+            class="w-full h-full object-cover opacity-75" />
+            <!-- Text Overlay Center -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <h2 class="text-2xl font-bold text-white drop-shadow-lg">Sonanadi Zone</h2>
+  </div>
+    </div>
+
+    <!-- Back -->
+    <div class="flip-card-back bg-orange-100 rounded-xl flex flex-col items-center justify-center p-4 space-y-4">
+      <h3 class="text-lg font-semibold text-orange-700">Known For: A raw, less-crowded wilderness experience</h3>
+      <p class="text-sm text-gray-700 text-center">
+      Top Sightings: Famous for its high population of Elephants and Leopards. Excellent for birdwatching.
+Promo: "Escape the crowds. Experience the wild, untamed Corbett."
+Pakhro Gate (Entry to Sonanadi)
+Known For: The newest and most easily accessible safari gate.
+Top Advantage: The closest and quickest entry point from Delhi/NCR via Kotdwar.
+Promo: "Less travel, more jungle. Your fastest getaway to the wild."
+      </p>
+      <a href="Sonanadi.html" 
+         class="mt-2 inline-block px-4 py-2 bg-orange-600 text-white text-sm rounded-lg shadow hover:bg-orange-700 transition cursor-pointer">
+         Read More →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Pakhro Card -->
+<div class="flip-card w-80 h-[450px]">
+  <div class="flip-card-inner">
+
+    <!-- Front with Image -->
+    <div class="flip-card-front bg-transparent border-2 border-green-600 rounded-xl overflow-hidden">
+      <img src="ayush.jpg" 
+           alt="Pakhro Zone" 
+            class="w-full h-full object-cover opacity-75" /><!-- Text Overlay Center -->
+  <div class="absolute inset-0 flex items-center justify-center">
+    <h2 class="text-2xl font-bold text-white drop-shadow-lg">Pakhro Zone</h2>
+  </div>
+    </div>
+
+    <!-- Back -->
+    <div class="flip-card-back bg-green-100 rounded-xl flex flex-col items-center justify-center p-4 space-y-4">
+      <h3 class="text-lg font-semibold text-green-700">Pakhro Zone – A Gateway to Wilderness
+
+</h3>
+      <p class="text-sm text-gray-700 text-center">
+        The Pakhro Zone serves as a significant entry point to the expansive wilderness of Jim Corbett National Park, 
+        accessible from near Kotdwar in the Pauri Garhwal district of Uttarakhand. As a gateway to the Sonanadi Range,
+         Pakhro offers a distinct and less-trodden path into the wild. This zone is celebrated for its raw, untamed 
+         beauty and provides a more tranquil safari experience, making it an ideal retreat for those looking to connect
+          with nature away from the bustling crowds.
+      </p>
+      <a href="Pakhro.html" 
+         class="mt-2 inline-block px-4 py-2 bg-green-600 text-white text-sm rounded-lg shadow hover:bg-green-700 transition cursor-pointer">
+         Read More →
+      </a>
+    </div>
+
+  </div>
+</div>
+    </section>
+    </div>
+    </section>
+
+       <!-- Plan Your Visit -->
+    <section id="plan" class="mt-12 bg-white/60 p-8 rounded-lg shadow-sm">
+      <li><h3 class="text-2xl font-semibold">
+        Plan Your Visit</h3></li>
+      <p class="mt-4 text-gray-700">
+        Peak wildlife viewing is during the dry season and winter months (roughly November to February).
+        Some zones close during monsoon (mid-June to mid-November).<br><br>
+        <h3 class="text-2xl font-semibold"><li>Night Stay</h3></li><br>
+        A night stay in Jim Corbett National Park offers a true jungle experience at forest rest houses like Halduparao,
+         Mundiyapani, Morghatti, Rathuwadhab, and Pakhro. Facilities are simple, but the thrill of staying amidst wildlife 
+         is unforgettable—listening to jungle sounds at night and enjoying early morning safaris to spot tigers, elephants,
+          deer, and birds.
+      </p>
+
+      <!-- Booking Info -->
+      <div class="mt-6 p-6 bg-emerald-50 border border-emerald-200 rounded-lg">
+        <h4 class="text-xl font-semibold text-emerald-700">Safari Booking</h4>
+        <p class="mt-2 text-gray-700">For bookings and inquiries, please contact:</p>
+        <ul class="mt-3 space-y-1 text-gray-800">
+          <li>📞 Phone: +91-98765-43210</li>
+          <li>📧 Email: bookings@corbettpark.in</li>
+          <li>🕒 Office Hours: 9:00 AM – 6:00 PM (IST)</li>
+        </ul>
+        <a href="tel:+919876543210" class="inline-block mt-4 px-5 py-2 bg-emerald-600 text-white rounded-lg shadow">
+          Call to Book Safari
+        </a>
+      </div>
+<!-- Booking Form -->
+<section id="booking" class="mt-12 bg-white p-8 rounded-lg shadow-md">
+  <h3 class="text-2xl font-semibold text-emerald-700">Online Booking Form</h3>
+  <p class="mt-2 text-gray-600">Fill out the form below to request your safari booking:</p>
+
+  <form action="https://formspree.io/f/xovkaeej" method="POST" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-medium">Full Name</label>
+      <input type="text" name="name" placeholder="Your Name" class="mt-2 w-full p-3 border rounded-lg" required />
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Phone Number</label>
+      <input type="tel" name="phone" placeholder="+91-XXXXXXXXXX" class="mt-2 w-full p-3 border rounded-lg" required />
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Number of Persons</label>
+      <input type="number" name="persons" min="1" max="20" value="1" class="mt-2 w-full p-3 border rounded-lg" required />
+    </div>
+    <div>
+      <!--ADDED: Number of Adults -->
+      <label class="block text-sm font-medium">Number of Adults (above 12 years)</label>
+      <input type="number" name="adults" min="0" max="20" value="1" class="mt-2 w-full p-3 border rounded-lg" required />
+    </div>
+
+    <!-- ADDED: Number of Children -->
+    <div>
+      <label class="block text-sm font-medium">Number of Children (5–12 years)</label>
+      <input type="number" name="children" min="0" max="20" value="0" class="mt-2 w-full p-3 border rounded-lg" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Safari Date</label>
+      <input type="date" name="date" class="mt-2 w-full p-3 border rounded-lg" required />
+    </div>
+
+    <!-- ADDED: Preferred Safari Zone -->
+    <div>
+      <label class="block text-sm font-medium">Preferred Safari Zone</label>
+      <select name="zone" class="mt-2 w-full p-3 border rounded-lg" required>
+        <option value="">-- Select Zone --</option>
+        <option value="dhikala">Dhikala</option>
+        <option value="bijrani">Bijrani</option>
+        <option value="jhirna">Jhirna</option>
+        <option value="dhela">Dhela</option>
+        <option value="durga-devi">Durga Devi</option>
+      </select>
+    </div>
+
+    <!-- ADDED: Type of Safari -->
+    <div>
+      <label class="block text-sm font-medium">Type of Safari</label>
+      <select name="safariType" class="mt-2 w-full p-3 border rounded-lg" required>
+        <option value="">-- Select Safari Type --</option>
+        <option value="jeep">Jeep Safari</option>
+        <option value="canter">Canter Safari</option>
+      </select>
+    </div>
+
+    <!-- ADDED: Accommodation Required -->
+    <div class="md:col-span-2">
+      <label class="block text-sm font-medium">Accommodation Required?</label>
+      <input type="text" name="accommodation" placeholder="Yes/No + Hotel/Resort preference" class="mt-2 w-full p-3 border rounded-lg" />
+    </div>
+
+    <!-- ADDED: Pickup Location -->
+    <div class="md:col-span-2">
+      <label class="block text-sm font-medium">Pickup Location</label>
+      <input type="text" name="pickup" placeholder="Kotdwar / Ramnagar / Hotel Name" class="mt-2 w-full p-3 border rounded-lg" />
+    </div>
+
+    <div class="md:col-span-2">
+      <label class="block text-sm font-medium">Additional Notes</label>
+      <textarea name="notes" rows="3" placeholder="Any special requests..." class="mt-2 w-full p-3 border rounded-lg"></textarea>
+    </div>
+    <div class="md:col-span-2">
+      <button type="submit" class="w-full md:w-auto px-6 py-3 bg-emerald-600 text-white rounded-lg shadow hover:bg-emerald-700 transition">
+        Submit Booking Request
+      </button>
+    </div>
+  </form>
+
+  <p class="mt-4 text-green-700 hidden" id="thankYouMsg">Thank you! Your booking request has been submitted.</p>
+</section>
+
+
+
+    <!-- Gallery -->
+    <section id="gallery" class="mt-12">
+      <h3 class="text-2xl font-semibold">Gallery</h3>
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="gallery.jpg" class="rounded shadow" />
+        <img src="sui.jpg" class="rounded shadow" />
+        <img src="ayush.jpg" class="rounded shadow" />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="mt-1"></footer>
 </main>
+<script>
+  const form = document.getElementById('bookingForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  submitBtn.addEventListener('click', () => {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const persons = document.getElementById('persons').value;
+    const date = document.getElementById('date').value;
+    const notes = document.getElementById('notes').value;
+
+    const email = 'bookings@corbettpark.in';
+    const subject = encodeURIComponent('Safari Booking Request');
+    const body = encodeURIComponent(
+      `Full Name: ${name}\nPhone: ${phone}\nNumber of Persons: ${persons}\nSafari Date: ${date}\nAdditional Notes: ${notes}`
+    );
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  });
+</script>
+<script>
+  const form = document.querySelector("form[action*='formspree']");
+  const thankYouMsg = document.getElementById("thankYouMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // prevent default reload
+
+    const data = new FormData(form);
+    const action = form.getAttribute("action");
+
+    try {
+      const response = await fetch(action, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (response.ok) {
+        thankYouMsg.classList.remove("hidden");
+        form.reset(); // clear form
+      } else {
+        alert("Oops! There was a problem submitting your form.");
+      }
+    } catch (error) {
+      alert("Oops! There was a problem submitting your form.");
+    }
+  });
+</script>
 </body>
-</html>
